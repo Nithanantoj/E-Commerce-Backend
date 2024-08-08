@@ -13,6 +13,7 @@ const auth = (req, res, next) => {
         //console.log(req.user)
         next();
     }catch(err){
+        console.log(err)
         res.status(401).json({error : "Invalid Token"})
     }
 };

@@ -45,6 +45,7 @@ const getProducts = async(id) => {
             const product = products.find(p => p.id === item.productId);
             subtotal += product.price * item.quantity
             return {
+                id : item.productId,
                 title: product.title,
                 description: product.description,
                 price : product.price,
