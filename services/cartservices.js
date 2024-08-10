@@ -32,7 +32,7 @@ const getProducts = async(id) => {
     try{
         const cart = await Cart.findOne({userId : id});
         if(!cart)
-            return "cart does not exist"
+            return null
         
 
         const productIds = cart.product.map(product => product.productId)

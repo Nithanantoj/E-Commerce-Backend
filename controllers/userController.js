@@ -26,7 +26,7 @@ const register_User = async(req, res) => {
     }catch(err){
         res.status(500).json({
             "status" : "failure",
-            "message" : "Patient is not Registerd"
+            "message" : "User is not Registerd"
         })
 
         console.error(err);
@@ -39,7 +39,10 @@ const login_User = async(req,res) => {
     const user = await User.findOne({email})
 try{
     if(!user){
-        return res.status(404);
+        return res.status(404).json({
+            "status" : "failure",
+            "message" : "User not found"
+        });
 
     }
     const isValidPassword = await bcrypt.compare(password,user.password);
@@ -57,6 +60,7 @@ try{
 
 }catch (err ){
     console.log(err);
+
     }
 };
 
